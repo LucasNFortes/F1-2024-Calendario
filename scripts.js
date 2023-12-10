@@ -138,7 +138,7 @@ function generateDaysHTML(daysInMonth, firstDayOfMonth, lastDayOfMonth) {
                 const dayClass = isCurrentDay ? 'current-day' : '';
                 
                 daysHTML += `
-                    <div class="day ${dayClass}" style="background: url(${flagURL})">
+                    <div class="day ${dayClass}" style="background: url(${flagURL}) no-repeat scroll center center">
                         <span>${dayCount}</span>
                         <p class="country">${gpInfo.grandPrix}</p>
                         ${raceTime ? `<p class="time">${raceTime}</p>` : ''}

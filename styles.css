@@ -6,7 +6,6 @@ body {
     align-items: center;
     justify-content: center;
     height: 100svh;
-    background-color: #f0f0f0;
     font-weight: 600;
     background: url(https://images.unsplash.com/photo-1638552708183-52e302a55e15?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     background-size: cover;
@@ -23,7 +22,6 @@ body {
 #calendar-container {
     color: #ffffff;
     border: 1px solid #56666B;
-    background-color: #fff;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1), 0.1;
     border-radius: 50px;
     background: transparent;
@@ -57,7 +55,12 @@ body {
     border: 1px solid #56666B;
     width: clamp(40px, 10svw, 100px);
     height: clamp(30px, 7.5svw, 75px);
+    background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
     background-position: center center;
 }
 

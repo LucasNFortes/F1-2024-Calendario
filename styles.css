@@ -11,8 +11,13 @@ body {
     background: url(https://images.unsplash.com/photo-1638552708183-52e302a55e15?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
     background-position: center center;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 #calendar-container {
@@ -73,7 +78,8 @@ body {
     padding: 0px;
     margin: 0px;
     margin-top: auto;
-    filter: drop-shadow(1px 1px  #383838); 
+    filter: drop-shadow(1px 1px  #383838);
+    -webkit-filter: drop-shadow(1px 1px #383838); 
 }
 
 .day:nth-child(-n+7) {

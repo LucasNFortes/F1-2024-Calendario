@@ -60,7 +60,7 @@ body {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: #000000;
     display: block;
-    font-size: clamp(5px, 5px + 30%, 1rem);
+    font-size: clamp(5px, 5px + 40%, 16px);
     padding: 0px;
     margin: 0px;
 }
@@ -69,34 +69,17 @@ body {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: #000000;
     margin: 0;
-    font-size: clamp(5px, 5px + 50%, 1rem);
+    font-size: clamp(5px, 5px + 80%, 1rem);
     padding: 0px;
     margin: 0px;
     margin-top: auto;
+    filter: drop-shadow(1px 1px  #383838); 
 }
 
 .day:nth-child(-n+7) {
     height: clamp(25px, 2.5svw, 25px);
     padding-top: 10px;
-    background: #56666B
 }
-
-.day:nth-child(-n+1) {
-    border-radius: 25px 0 0 0;
-}
-
-.day:last-child {
-    border-radius: 0 0 25px 0;
-}
-
-.day:nth-child(7) {
-    border-radius: 0 25px 0 0;
-}
-
-.day:nth-last-child(7) {
-    border-radius: 0 0 0 25px;
-}
-
 
 @media (max-width: 700px) {
     .country {

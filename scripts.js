@@ -132,9 +132,13 @@ function generateDaysHTML(daysInMonth, firstDayOfMonth, lastDayOfMonth) {
                 const flagURL = getFlagURL(gpInfo.grandPrix);
                 const index = grandPrixData.findIndex(gp => gp.date.getTime() === currentDay.getTime());
                 const raceTime = index !== -1 ? raceTimes[index] : '';
+
+                // Adicione a classe 'current-day' se o dia atual
+                const isCurrentDay = currentDay.toDateString() === new Date().toDateString();
+                const dayClass = isCurrentDay ? 'current-day' : '';
                 
                 daysHTML += `
-                    <div class="day" style="background: url(${flagURL})">
+                    <div class="day ${dayClass}" style="background: url(${flagURL})">
                         <span>${dayCount}</span>
                         <p class="country">${gpInfo.grandPrix}</p>
                         ${raceTime ? `<p class="time">${raceTime}</p>` : ''}

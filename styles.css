@@ -112,3 +112,8 @@ button span {
     color: inherit;
     transition: all 0.3s;
 }
+
+.current-day {
+    border: 1px solid #0a9975;
+    box-shadow: inset 0 0 10px #0a9975;
+}

@@ -52,6 +52,45 @@ function generateDaysHTML(daysInMonth, firstDayOfMonth, lastDayOfMonth) {
     let daysHTML = "";
     let dayCount = 1;
 
+    const raceTimes = [
+        "11:00", "13:00", "01:00", "01:00", "02:00", "15:30", "09:00", "09:00",  //Bahrein,Arábia Saudita,Austrália,Japão,China,Miami,Emília-Romanha,Mônaco
+        "14:00", "09:00", "09:00", "10:00", "09:00", "09:00", "09:00", "09:00",  //Canadá,Espanha,Áustria,Grã-Bretanha,Hungria,Bélgica,Países Baixos,Itália
+        "07:00", "08:00", "15:00", "16:00", "13:00", "02:00", "13:00", "09:00"  //Azerbaijão,Singapura,Estados Unidos,Cidade do México,São Paulo,Las Vegas,Catar,Abu Dhabi
+    ];
+
+    const classificationTimes = [
+        "11:00", "13:00", "01:00", "02:00", "02:00", "16:00", "10:30", "10:00",  //Bahrein,Arábia Saudita,Austrália,Japão,China,Miami,Emília-Romanha,Mônaco
+        "16:00", "10:00", "10:30", "10:00", "10:00", "11:00", "09:00", "10:00",  //Canadá,Espanha,Áustria,Grã-Bretanha,Hungria,Bélgica,Países Baixos,Itália
+        "09:30", "09:00", "18:00", "17:00", "14:30", "04:00", "13:30", "10:00"  //Azerbaijão,Singapura,Estados Unidos,Cidade do México,São Paulo,Las Vegas,Catar,Abu Dhabi
+    ];
+
+    const grandPrixData = [
+        { date: new Date(2024, 2, 2), grandPrix: "Bahrein" },
+        { date: new Date(2024, 2, 9), grandPrix: "Arábia Saudita" },
+        { date: new Date(2024, 2, 24), grandPrix: "Austrália" },
+        { date: new Date(2024, 3, 7), grandPrix: "Japão" },
+        { date: new Date(2024, 3, 21), grandPrix: "China" },
+        { date: new Date(2024, 4, 5), grandPrix: "Miami" },
+        { date: new Date(2024, 4, 19), grandPrix: "Emília-Romanha" },
+        { date: new Date(2024, 4, 26), grandPrix: "Mônaco" },
+        { date: new Date(2024, 5, 9), grandPrix: "Canadá" },
+        { date: new Date(2024, 5, 23), grandPrix: "Espanha" },
+        { date: new Date(2024, 5, 30), grandPrix: "Áustria" },
+        { date: new Date(2024, 6, 7), grandPrix: "Grã-Bretanha" },
+        { date: new Date(2024, 6, 21), grandPrix: "Hungria" },
+        { date: new Date(2024, 6, 28), grandPrix: "Bélgica" },
+        { date: new Date(2024, 7, 25), grandPrix: "Países Baixos" },
+        { date: new Date(2024, 8, 1), grandPrix: "Itália" },
+        { date: new Date(2024, 8, 15), grandPrix: "Azerbaijão" },
+        { date: new Date(2024, 8, 22), grandPrix: "Singapura" },
+        { date: new Date(2024, 9, 20), grandPrix: "Estados Unidos" },
+        { date: new Date(2024, 9, 27), grandPrix: "Cidade do México" },
+        { date: new Date(2024, 10, 3), grandPrix: "São Paulo" },
+        { date: new Date(2024, 10, 23), grandPrix: "Las Vegas" },
+        { date: new Date(2024, 11, 1), grandPrix: "Catar" },
+        { date: new Date(2024, 11, 8), grandPrix: "Abu Dhabi" }
+    ];
+
     for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 7; j++) {
             if ((i === 0 && j < firstDayOfMonth) || (dayCount > daysInMonth)) {
@@ -60,12 +99,16 @@ function generateDaysHTML(daysInMonth, firstDayOfMonth, lastDayOfMonth) {
                 const currentDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), dayCount);
                 const gpInfo = getGrandPrixInfo(currentDay);
                 const flagURL = getFlagURL(gpInfo.grandPrix);
+                const raceTime = grandPrixData.some(gp => gp.date.getTime() === currentDay.getTime())
+                ? raceTimes[grandPrixData.findIndex(gp => gp.date.getTime() === currentDay.getTime())]
+                : '';
 
                 daysHTML += `
                     <div class="day" style="background: url(${flagURL})">
                         <span>${dayCount}</span>
-                        <p>${gpInfo.grandPrix}</p>
-                    </div>`;
+                        <p class="country">${gpInfo.grandPrix}</p>
+                        ${raceTime ? `<p class="hour">${raceTime}</p>` : ''}
+                        </div>`;
                 dayCount++;
             }
         }
@@ -133,12 +176,10 @@ function getFlagURL(grandPrix) {
         "Las Vegas": "https://flagicons.lipis.dev/flags/4x3/us.svg",
         "Catar": "https://flagicons.lipis.dev/flags/4x3/qa.svg",
         "Abu Dhabi": "https://flagicons.lipis.dev/flags/4x3/ae.svg"
-
     };
 
     return flagURLs[grandPrix] || "../bg-t.png";
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
     currentDate = new Date();

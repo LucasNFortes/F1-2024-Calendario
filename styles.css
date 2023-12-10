@@ -60,13 +60,16 @@ body {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: #000000;
     display: block;
+    font-size: clamp(5px, 5px + 30%, 1rem);
+    padding: 0px;
+    margin: 0px;
 }
 
 .day p {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: #000000;
     margin: 0;
-    font-size: clamp(1px, 8px + 50%, 1rem);
+    font-size: clamp(5px, 5px + 50%, 1rem);
     padding: 0px;
     margin: 0px;
     margin-top: auto;
@@ -96,7 +99,7 @@ body {
 
 
 @media (max-width: 700px) {
-    .day p {
+    .country {
         display: none;
     }
 }

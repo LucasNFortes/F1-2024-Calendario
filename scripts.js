@@ -211,7 +211,7 @@ function getFlagURL(grandPrix) {
         "AE Qualify": "https://flagicons.lipis.dev/flags/4x3/ae.svg"
     };
 
-    return flagURLs[grandPrix] || "../bg-t.png";
+    return flagURLs[grandPrix] || "bg-t.png";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
